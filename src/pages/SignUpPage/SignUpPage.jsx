@@ -16,15 +16,12 @@ export default function SignUpPage(){
     const navigate = useNavigate();
 
     function signUp(e) {
-
         e.preventDefault();
-
         if (password !== confirmPassword) return alert("Password must be equal!");
 
         axios.post(`${import.meta.env.VITE_API_URL}/signup`, { name, cpf, phone, email, password, confirmPassword })
             .then(() => navigate("/home"))
             .catch((err) => alert(err.message))
-
     }
 
 
@@ -37,33 +34,37 @@ export default function SignUpPage(){
                     type="text"
                     value={name}
                     onChange={e => setName(e.target.value)}
-                    required></input>
+                    required/>
                 <input 
                     placeholder="CPF" 
                     type="text"
                     value={cpf}
                     onChange={e => setCpf(e.target.value)}
-                    required></input>
+                    required/>
                 <input 
                     placeholder="Telefone" 
                     type="text"
                     value={phone}
-                    onChange={e => setPhone(e.target.value)}></input>
+                    onChange={e => setPhone(e.target.value)}
+                    required/>
                 <input 
                     placeholder="E-mail" 
                     type="email"
                     value={email}
-                    onChange={e => setEmail(e.target.value)}></input>
+                    onChange={e => setEmail(e.target.value)}
+                    required/>
                 <input 
                     placeholder="Senha" 
                     type="password"
                     value={password}
-                    onChange={e => setPassword(e.target.value)}></input>
+                    onChange={e => setPassword(e.target.value)}
+                    required/>
                 <input 
                     placeholder="Confirme sua senha" 
                     type="password"
                     value={confirmPassword}
-                    onChange={e => setConfirmPassword(e.target.value)}></input>
+                    onChange={e => setConfirmPassword(e.target.value)}
+                    required/>
                 <button type="submit">Cadastrar</button>
             </form>
             <Link to={'/'}>
