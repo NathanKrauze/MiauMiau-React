@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import black_logo from "../assets/black_logo.png";
+import { Link } from "react-router-dom";
 
 export default function Navbar(){
     return(
@@ -7,15 +8,21 @@ export default function Navbar(){
             <img src={black_logo} alt="logo" />
             <div>
                 <div>icon</div>
-                <LinkTitle>Tela inicial</LinkTitle>
+                <Link to={'/home'}>
+                    <LinkTitle>Tela inicial</LinkTitle>
+                </Link>
             </div>
             <div>
                 <div>icon</div>
-                <LinkTitle>Gerenciar</LinkTitle>
+                <Link to={'/manage'}>
+                    <LinkTitle>Gerenciar</LinkTitle>
+                </Link>
             </div>
             <div>
                 <div>icon</div>
-                <LinkTitle>Adicionar</LinkTitle>
+                <Link to={'/add'}>
+                    <LinkTitle>Adicionar</LinkTitle>
+                </Link>
             </div>
         </NavbarContainer>
     )
@@ -40,6 +47,10 @@ const NavbarContainer = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+    a{
+        color: black;
+        text-decoration: none;
     }
 `
 
