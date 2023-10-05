@@ -1,39 +1,12 @@
 import styled from "styled-components"
 
-export default function Cat() {
+export default function Cat({cat}) {
+    const {id, name, photo} = cat
     return (
         <>
             <CatContainer>
-                <img src="https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg" alt="cat" />
-                <h2>Felix</h2>
-            </CatContainer>
-            <CatContainer>
-                <img src="https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg" alt="cat" />
-                <h2>Felix</h2>
-            </CatContainer>
-            <CatContainer>
-                <img src="https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg" alt="cat" />
-                <h2>Felix</h2>
-            </CatContainer>
-            <CatContainer>
-                <img src="https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg" alt="cat" />
-                <h2>Felix</h2>
-            </CatContainer>
-            <CatContainer>
-                <img src="https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg" alt="cat" />
-                <h2>Felix</h2>
-            </CatContainer>
-            <CatContainer>
-                <img src="https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg" alt="cat" />
-                <h2>Felix</h2>
-            </CatContainer>
-            <CatContainer>
-                <img src="https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg" alt="cat" />
-                <h2>Felix</h2>
-            </CatContainer>
-            <CatContainer>
-                <img src="https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg" alt="cat" />
-                <h2>Felix</h2>
+                <img src={photo} alt="cat" />
+                <h2>{name}</h2>
             </CatContainer>
         </>
     )

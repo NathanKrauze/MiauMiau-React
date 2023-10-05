@@ -3,7 +3,6 @@ import logo from "../../assets/logo.png"
 import Navbar from "../../components/Navbar";
 import { useContext, useState } from "react";
 import axios from "axios";
-import AuthContext from "../../contexts/AuthContext";
 
 export default function AddCatPage() {
 
