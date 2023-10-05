@@ -1,13 +1,17 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-export default function Cat({cat}) {
-    const {id, name, photo} = cat
+export default function Cat({ cat }) {
+    const { id, name, photo } = cat;
+
     return (
         <>
-            <CatContainer>
-                <img src={photo} alt="cat" />
-                <h2>{name}</h2>
-            </CatContainer>
+            <Link to={`/cat/${id}`}>
+                <CatContainer>
+                    <img src={photo} alt="cat" />
+                    <h2>{name}</h2>
+                </CatContainer>
+            </Link>
         </>
     )
 }
@@ -21,5 +25,9 @@ const CatContainer = styled.li`
     }
     h2{
         margin-left: 15px;
+    }
+    a{
+        color: black;
+        text-decoration: none;
     }
 `

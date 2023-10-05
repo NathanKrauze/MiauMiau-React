@@ -20,7 +20,7 @@ export default function App() {
             <Route path="/" element={<SignInPage />} />
             <Route path="/sign-up" element={<SignUpPage />} />
             <Route path="/home" element={<HomePage />} />
-            <Route path="/cat" element={<CatPage />} />
+            <Route path="/cat/:catId" element={<CatPage />} />
             <Route path="/manage" element={<ManagePage />} />
             <Route path="/add" element={<AddCatPage />} />
           </Routes>

@@ -1,28 +1,50 @@
 import styled from "styled-components"
 import Navbar from "../../components/Navbar"
+import { Link, useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 export default function CatPage() {
+    const [cat, setCat] = useState([]);
+    const navigate= useNavigate();
+    const {catId} = useParams();
+
+    const token = localStorage.getItem('token');
+
+    const auth = {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+    }
+
+    useEffect(()=>{
+        if(!token) return navigate('/');
+
+        axios.get(`${import.meta.env.VITE_API_URL}/cats/${catId}`, auth)
+            .then(res => setCat(res.data))
+            .catch(err => alert(err.response.data));
+    },[]);
+
     return (
         <CatPageContainer>
-            <CatImg src="https://www.zooplus.pt/magazine/wp-content/uploads/2021/03/kitten-sitzt-boden-768x512-1.jpeg" alt="cat" />
+            <Link to={'/home'}>
+                <button>{"<-"}</button>
+            </Link>
+            <CatImg src={cat.photo} alt="cat" />
             <div>
                 <div>
                     <InfoTitle>Sobre</InfoTitle>
                     <h3>Nome</h3>
-                    <h4>Felix</h4>
+                    <h4>{cat.name}</h4>
                     <h3>Características</h3>
-                    <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                        Nullam congue quam vitae auctor ultricies.
-                        Curabitur laoreet metus eu dignissim porttitor.
-                        Quisque quis eleifend elit. Morbi et faucibus diam.
-                        Donec sodales.</h4>
+                    <h4>{cat.characteristics}</h4>
                 </div>
                 <div>
                     <InfoTitle>Informações para contato</InfoTitle>
                     <h3>Tutor</h3>
-                    <h4>Nathan Kraze</h4>
-                    <h3>telefone</h3>
-                    <h4>27998765432</h4>
+                    <h4>{cat.username}</h4>
+                    <h3>Telefone</h3>
+                    <h4>{cat.user_phone}</h4>
                 </div>
             </div>
             <Navbar/>
@@ -46,7 +68,7 @@ const CatPageContainer = styled.div`
 
 const CatImg = styled.img`
     width: calc(100vw - 40px);
-    margin-bottom: 15px;
+    margin: 15px 0;
 
 `
 

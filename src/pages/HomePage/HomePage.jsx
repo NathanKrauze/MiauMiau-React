@@ -26,8 +26,6 @@ export default function HomePage(){
         .catch(err => alert(err.response.data));
     },[]);
 
-    console.log(cats)
-
     return(
         <HomeContainer >
             <h1>Miaudelos disponíveis!</h1>
@@ -43,5 +41,8 @@ const HomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
-
+    a{
+        color: black;
+        text-decoration: none;
+    }
 `
