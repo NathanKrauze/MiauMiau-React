@@ -5,17 +5,17 @@ import ManagePage from "./pages/ManagePage/ManagePage";
 import HomePage from "./pages/HomePage/HomePage";
 import AddCatPage from "./pages/AddCatPage/AddCatPage";
 import CatPage from "./pages/CatPage/CatPage";
-import AuthContext from "./contexts/AuthContext";
+import PageContext from "./contexts/PageContext";
 import { useState } from "react";
 
 export default function App() {
 
-  const [token, setToken] = useState("")
+  const [currentPage, setCurrentPage] = useState("Página Inicial")
 
   return (
     <>
       <BrowserRouter>
-        <AuthContext.Provider value={{token, setToken}}>
+        <PageContext.Provider value={{currentPage, setCurrentPage}}>
           <Routes>
             <Route path="/" element={<SignInPage />} />
             <Route path="/sign-up" element={<SignUpPage />} />
@@ -24,7 +24,7 @@ export default function App() {
             <Route path="/manage" element={<ManagePage />} />
             <Route path="/add" element={<AddCatPage />} />
           </Routes>
-        </AuthContext.Provider>
+        </PageContext.Provider>
       </BrowserRouter>
     </>
   )

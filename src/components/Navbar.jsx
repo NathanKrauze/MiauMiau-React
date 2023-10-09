@@ -1,29 +1,52 @@
 import styled from "styled-components";
 import black_logo from "../assets/black_logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { BottomNavigation, BottomNavigationAction } from "@mui/material";
+import { AddBox, Home, Settings } from "@mui/icons-material";
+import { useContext, useState } from "react";
+import PageContext from "../contexts/PageContext";
 
-export default function Navbar(){
-    return(
+export default function Navbar() {
+
+    const {currentPage, setCurrentPage} = useContext(PageContext);
+    const navigate = useNavigate()
+
+    const changePage = (event, newValue) => {
+        setCurrentPage(newValue);
+        switch(newValue){
+            case 'Página Inicial':
+                navigate('/home');
+                break;
+            case 'Gerenciar':
+                navigate('/manage');
+                break;
+            case 'Adicionar':
+                navigate('/add');
+                break;
+            default:
+                navigate('/home');
+        }
+      };
+
+    return (
         <NavbarContainer>
-            <img src={black_logo} alt="logo" />
-            <div>
-                <div>icon</div>
-                <Link to={'/home'}>
-                    <LinkTitle>Tela inicial</LinkTitle>
-                </Link>
-            </div>
-            <div>
-                <div>icon</div>
-                <Link to={'/manage'}>
-                    <LinkTitle>Gerenciar</LinkTitle>
-                </Link>
-            </div>
-            <div>
-                <div>icon</div>
-                <Link to={'/add'}>
-                    <LinkTitle>Adicionar</LinkTitle>
-                </Link>
-            </div>
+            <BottomNavigation sx={{ width: 500, backgroundColor: '#FFC278' }} value={currentPage} onChange={changePage}>
+                <BottomNavigationAction
+                    label="Página Inicial"
+                    value="Página Inicial"
+                    icon={<Home />}
+                />
+                <BottomNavigationAction
+                    label="Gerenciar"
+                    value="Gerenciar"
+                    icon={<Settings />}
+                />
+                <BottomNavigationAction
+                    label="Adicionar"
+                    value="Adicionar"
+                    icon={<AddBox />}
+                />
+            </BottomNavigation>
         </NavbarContainer>
     )
 }
@@ -37,16 +60,10 @@ const NavbarContainer = styled.div`
     justify-content: space-around;
     background-color: #FFC278;
     width: 100vw;
-    height: 70px;
+    height: 65px;
     box-shadow: 0 0 6px -1px black;
     img{
         width: 40px;
-    }
-    div{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
     }
     a{
         color: black;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Cat from "../../components/Cat";
 import Navbar from "../../components/Navbar";
+import black_logo from "../../assets/black_logo.png"
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -28,7 +29,10 @@ export default function HomePage(){
 
     return(
         <HomeContainer >
-            <h1>Miaudelos disponíveis!</h1>
+            <header>
+                <img src={black_logo} alt="logo" />
+                <h1>Miaudelos disponíveis</h1>
+            </header>
             <ul>
                 {cats.map(cat => <Cat cat={cat} key={cat.id}/>)}
             </ul>
@@ -41,8 +45,5 @@ const HomeContainer = styled.div`
     display: flex;
     flex-direction: column;
     height: 100vh;
-    a{
-        color: black;
-        text-decoration: none;
-    }
+
 `
