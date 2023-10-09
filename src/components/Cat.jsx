@@ -42,7 +42,10 @@ export default function Cat({ cat, manage }) {
         </>
     )
 
-    return (
+    else if (!available) return(
+            <></>
+        )
+     else return (
         <>
             <Link to={`/cat/${id}`}>
                 <CatContainer>
